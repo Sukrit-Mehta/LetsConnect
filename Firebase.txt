@@ -1,0 +1,209 @@
+////t Fire App
+Add some email id and pwd in Authentication on Firebase on net..!
+						//activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+
+    tools:context="com.example.sukrit.tfireapp.MainActivity">
+
+
+    <EditText
+        android:id="@+id/emailField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/passwordField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/emailField"
+        android:layout_below="@+id/emailField"
+        android:layout_marginTop="63dp"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordField"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp"
+        android:text="Login" />
+</RelativeLayout>
+
+
+						//MainActivity.java
+
+
+MainActivity.javapackage com.example.sukrit.tfireapp;
+
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText edtemail;
+    EditText edtpassword;
+    Button btnlogin;
+    public FirebaseAuth mAuth;
+    public FirebaseAuth.AuthStateListener listener;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        mAuth=FirebaseAuth.getInstance();
+        edtemail= (EditText) findViewById(R.id.emailField);
+        edtpassword= (EditText) findViewById(R.id.passwordField);
+        btnlogin= (Button) findViewById(R.id.login);
+
+        listener=new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(firebaseAuth.getCurrentUser()!=null) {
+                    startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                }
+            }
+        };
+
+        btnlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSignIn();
+            }
+        });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(listener);
+    }
+
+    private void startSignIn()
+    {
+        String email=edtemail.getText().toString();
+        String password=edtpassword.getText().toString();
+
+        if(TextUtils.isEmpty(email)|| TextUtils.isEmpty(password))
+        {
+            Toast.makeText(MainActivity.this,"Empty field..!!",Toast.LENGTH_SHORT).show();
+        }else {
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(!task.isSuccessful())
+                    {
+                        Toast.makeText(MainActivity.this,"Problem in signing",Toast.LENGTH_SHORT).show();
+                        FirebaseUser user = mAuth.getCurrentUser();
+                    }
+                }
+            });
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------
+
+
+//////////////List
+
+//MainActivity.java
+
+package com.example.sukrit.tfireapp;
+
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView listView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        listView= (ListView) findViewById(R.id.listView);
+
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://tfireapp.firebaseio.com/Users");
+        FirebaseListAdapter<String> firebaseListAdapter=new FirebaseListAdapter<String>(this, String.class,
+                android.R.layout.simple_list_item_1,
+                databaseReference
+                ) {
+            @Override
+            protected void populateView(View v, String model, int position) {
+                TextView textView=(TextView)v.findViewById(android.R.id.text1);
+                textView.setText(model);
+            }
+        };
+        listView.setAdapter(firebaseListAdapter);
+    }
+}
+
+// activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+
+    tools:context="com.example.sukrit.tfireapp.MainActivity">
+
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

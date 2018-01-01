@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.example.sukrit.blogapp.ProfileActivity">
+<include layout="@layout/app_bar_layout" android:id="@+id/profile_appBar"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="60dp"
+        android:background="#ffffff"
+        android:src="@mipmap/pic"
+       />
+
+    <TextView
+        android:id="@+id/profile_posts_count"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:text="23"
+        android:layout_marginTop="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/profile_image" />
+
+    <TextView
+        android:id="@+id/profile_friends_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/profile_posts_count"
+        android:layout_marginStart="64dp"
+        android:layout_toEndOf="@+id/profile_posts_count"
+        android:text="49" />
+
+    <Button
+        android:id="@+id/profile_edit_profileBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/profile_image"
+        android:layout_alignStart="@+id/profile_posts_count"
+        android:padding="10dp"
+        android:text="Edit Your Profile" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_alignStart="@+id/profile_posts_count"
+        android:layout_below="@+id/profile_posts_count"
+        android:text="Posts" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Friends"
+        android:layout_below="@+id/profile_friends_count"
+        android:layout_alignEnd="@+id/profile_edit_profileBtn"
+        android:layout_marginEnd="13dp" />
+
+    <TextView
+        android:id="@+id/profile_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/profile_image"
+        android:layout_below="@+id/profile_image"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="19dp"
+        android:text="TextView" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/profile_posts_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/profile_user_name"
+        android:layout_toEndOf="@+id/textView7" />
+
+
+</RelativeLayout>

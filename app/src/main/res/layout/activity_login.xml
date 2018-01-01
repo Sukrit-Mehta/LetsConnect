@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back1"
+    tools:context="com.example.sukrit.blogapp.LoginActivity">
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/imageV"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon"/>
+
+    <EditText
+        android:id="@+id/loginEmailField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="80dp"
+        android:layout_below="@+id/imageV"
+        android:ems="10"
+        android:textColorHint="#ffffff"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:hint="Enter email. . ."
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/loginPasswordField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#ffffff"
+        android:layout_below="@+id/loginEmailField"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="80dp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="20dp"
+        android:textSize="17sp"
+        android:ems="10"
+        android:hint="Enter password..."
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="15dp"
+        android:text="Login"
+        android:background="@mipmap/back4"
+        android:layout_below="@+id/loginPasswordField"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        android:id="@+id/newAccountBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Need A New Account"
+        android:layout_marginBottom="5dp"
+        android:background="@mipmap/back4"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <com.google.android.gms.common.SignInButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/googleBtn"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"></com.google.android.gms.common.SignInButton>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginBtn"
+        android:layout_marginTop="10dp"
+        android:text="Or"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_alignEnd="@+id/googleBtn"
+        android:layout_alignStart="@+id/loginBtn" />
+</RelativeLayout>

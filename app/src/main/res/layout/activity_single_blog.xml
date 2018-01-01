@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sukrit.blogapp.SingleBlogActivity">
+    <include layout="@layout/app_bar_layout" android:id="@+id/singleBlog_appBar"/>
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:layout_marginTop="70dp"
+    android:id="@+id/singleBlogImage"
+    android:layout_below="@+id/singleBlog_appBar" />
+
+    <TextView
+        android:id="@+id/singleBlogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/singleBlogImage"
+        android:padding="10dp"
+        android:textSize="16dp"
+        android:text="TextView" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/singleBlogTitle"
+        android:text="Post Description goes here"
+        android:id="@+id/singleBlogDescription"
+        android:padding="10dp"
+        android:textSize="15dp"
+        />
+
+    <Button
+        android:id="@+id/removePostBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="Remove Post"
+        android:visibility="invisible" />
+</RelativeLayout>

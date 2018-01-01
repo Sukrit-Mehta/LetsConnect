@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginBottom="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_username"
+            android:padding="10dp"
+            android:text="Username"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            />
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:adjustViewBounds="true"
+            android:id="@+id/post_image"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="15dp"
+            android:src="@mipmap/ic_fullscreen_white_24dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:visibility="invisible"
+            android:id="@+id/heart"
+            android:layout_gravity="center"
+            android:src="@mipmap/heart1"/>
+</FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/post_title"
+        android:textStyle="bold|italic"
+        android:layout_marginLeft="10dp"
+        android:text="Post Title goes here"
+        android:textColor="#000000"
+        android:textSize="17dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post Description goes here"
+        android:id="@+id/post_desc"
+        android:padding="8dp"
+        android:textStyle="italic"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

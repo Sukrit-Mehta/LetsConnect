@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sukrit.blogapp.PostActivity">
+<include layout="@layout/app_bar_layout" android:id="@+id/post_appBar"/>
+    <ImageButton
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:adjustViewBounds="true"
+        android:background="#00ffffff"
+        android:scaleType="centerCrop"
+        app:srcCompat="@mipmap/ic_fullscreen_white_24dp"
+        android:id="@+id/ImageSelect"
+        android:layout_below="@+id/post_appBar"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/titleField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageSelect"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/input_outline"
+        android:ems="10"
+        android:padding="15dp"
+        android:inputType="textPersonName"
+        android:hint="Post Title...."
+         />
+
+    <EditText
+        android:id="@+id/descField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/titleField"
+        android:layout_below="@+id/titleField"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/input_outline"
+        android:ems="10"
+        android:hint="Post Description...."
+        android:inputType="textMultiLine"
+        android:padding="15dp" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary"
+        android:text="Submit Post"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>
